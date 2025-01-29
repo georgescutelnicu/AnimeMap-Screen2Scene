@@ -15,7 +15,7 @@ pip install -r requirements.txt
 
 ### Command-Line Arguments
 
-- **-i, --ids**: A list of anime IDs to scrape (**required**). Make sure the ID exists on the website. For example, the URL https://furaba-animeseichi.blog.jp/archives/**35846680**.html has the ID **35846680**.
+- **-i, --ids**: A list of anime IDs to scrape (**required**). Make sure the ID exists on the website. For example, the URL https://furaba-animeseichi.blog.jp/archives/cat_222510.html has the ID **222510**.
 - **-n, --csv_name**: The name for the output CSV files (**required**).
 
 ```bash
@@ -25,7 +25,7 @@ python scraper.py -p 1 -k "java" -n "java_jobs"
 ### Example Command
 
 ```bash
-python scraper.py --ids 35846680 --csv_name output
+python scraper.py --ids 222510 --csv_name output
 ```
 
 ### Output Files
@@ -40,9 +40,9 @@ python scraper.py --ids 35846680 --csv_name output
 |---------------|-----------------|--------------|----------------------------|------|--------------------|-----------------|-------------------|
 | 鬼滅の刃       | Kimetsu no Yaiba | Demon Slayer | https://example.com/image.jpg | TV   | 26                 | 2019            | A story about...  |
 
-| Anime Name | Location Name |Coordinates | Real Photos               | Anime Photos               |
-|------------|---------------|------------|---------------------------|----------------------------|
-| 鬼滅の刃    | Ashikaga Flower Park      | 44.39315051849718, 26.042991665924724 |[photo1.jpg, photo2.jpg]  | [anime1.jpg, anime2.jpg]   |
+| Anime Name | Location Name | Real Photos               | Anime Photos               |
+|------------|---------------|---------------------------|----------------------------|
+| 鬼滅の刃    | Ashikaga Flower Park      | [photo1.jpg, photo2.jpg]  | [anime1.jpg, anime2.jpg]   |
 
 ## Notes
 
