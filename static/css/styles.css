@@ -101,8 +101,6 @@ body {
   color: #f0e6e9;
 }
 
-
-
 #carouselWrapper {
   width: 100%;
   max-width: 80rem;
@@ -110,40 +108,55 @@ body {
 }
 
 #carousel {
-  overflow: auto;
-  scroll-behavior: smooth;
-  scrollbar-width: none;
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding-bottom: 10px;
 }
 
 #carousel::-webkit-scrollbar {
-  height: 0;
+  height: 5px;
+  background: #ddd;
 }
 
-#prev,
-#next {
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  background: white;
-  border: 2px black solid;
-  padding: 12px;
-  border-radius: 50%;
-  outline: 0;
-  cursor: pointer;
+#carousel::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+#carousel::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.animeContainer {
+  position: relative;
+  display: inline-block;
+}
+
+.animeContainer:hover .overlay {
+  opacity: 1;
+}
+
+.item {
+  width: 210px;
+  height: 300px;
+  border-radius: 18px;
+}
+
+.overlay {
   position: absolute;
-}
-
-#prev {
-  top: 50%;
+  top: 0;
   left: 0;
-  transform: translate(50%, -50%);
-  display: none;
-}
-
-#next {
-  top: 50%;
-  right: 0;
-  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 300px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 18px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 #content {
@@ -158,6 +171,12 @@ body {
   color: #f0e6e9;
   font-weight: bold;
   text-align: center;
+  margin: 10%;
+}
+
+.enAnimeTitle {
+  font-size: 12px;
+  letter-spacing: 1px;
 }
 
 .map {

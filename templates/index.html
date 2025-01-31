@@ -37,107 +37,25 @@
             <div id="carouselWrapper">
                 <div id="carousel">
                     <div id="content">
-                        <div>
-                            <img
-                                    class="item"
-                                    src="https://cdn.myanimelist.net/images/anime/1405/143284l.jpg"
-                            />
-                            <p class="animeTitle">Randon anime name here 2nd</p>
-                        </div>
-                        <div>
-                            <img
-                                    class="item"
-                                    src="https://cdn.myanimelist.net/images/anime/1405/143284l.jpg"
-                            />
-                            <p class="animeTitle">Randon anime name here 2nd</p>
-                        </div>
-                        <div>
-                            <img
-                                    class="item"
-                                    src="https://cdn.myanimelist.net/images/anime/1405/143284l.jpg"
-                            />
-                            <p class="animeTitle">Randon anime name here 2nd</p>
-                        </div>
-                        <div>
-                            <img
-                                    class="item"
-                                    src="https://cdn.myanimelist.net/images/anime/1405/143284l.jpg"
-                            />
-                            <p class="animeTitle">Randon anime name here 2nd</p>
-                        </div>
-                        <div>
-                            <img
-                                    class="item"
-                                    src="https://cdn.myanimelist.net/images/anime/1405/143284l.jpg"
-                            />
-                            <p class="animeTitle">Randon anime name here 2nd</p>
-                        </div>
-                        <div>
-                            <img
-                                    class="item"
-                                    src="https://cdn.myanimelist.net/images/anime/1405/143284l.jpg"
-                            />
-                            <p class="animeTitle">Randon anime name here 2nd</p>
-                        </div>
-                        <div>
-                            <img
-                                    class="item"
-                                    src="https://cdn.myanimelist.net/images/anime/1405/143284l.jpg"
-                            />
-                            <p class="animeTitle">Randon anime name here 2nd</p>
-                        </div>
-                        <div>
-                            <img
-                                    class="item"
-                                    src="https://cdn.myanimelist.net/images/anime/1405/143284l.jpg"
-                            />
-                            <p class="animeTitle">Randon anime name here 2nd</p>
-                        </div>
-                        <div>
-                            <img
-                                    class="item"
-                                    src="https://cdn.myanimelist.net/images/anime/1405/143284l.jpg"
-                            />
-                            <p class="animeTitle">Randon anime name here 2nd</p>
-                        </div>
-                        <div>
-                            <img
-                                    class="item"
-                                    src="https://cdn.myanimelist.net/images/anime/1405/143284l.jpg"
-                            />
-                            <p class="animeTitle">Randon anime name here 2nd</p>
-                        </div>
-                        <div>
-                            <img
-                                    class="item"
-                                    src="https://cdn.myanimelist.net/images/anime/1405/143284l.jpg"
-                            />
-                            <p class="animeTitle">Randon anime name here 2nd</p>
-                        </div>
+                        {% for anime in anime_details %}
+                            <div class="animeContainer">
+                                <img
+                                        class="item"
+                                        src="{{ anime.image_url }}"
+                                />
+                                <div class="overlay">
+                                {% if anime.japanese_name.lower() == anime.english_name.lower()
+                                    or anime.english_name.lower() == anime.romaji_name.lower() %}
+                                    <p class="animeTitle">{{ anime.romaji_name }}</p>
+                                {% else %}
+                                    <p class="animeTitle">{{ anime.english_name }} <br>
+                                        <span class="enAnimeTitle">({{ anime.romaji_name }})</span></p>
+                                {% endif %}
+                                </div>
+                            </div>
+                        {% endfor %}
                     </div>
                 </div>
-                <button id="prev">
-                    <svg
-                            height="24"
-                            viewBox="0 0 24 24"
-                            width="24"
-                            xmlns="http://www.w3.org/2000/svg"
-                    >
-                        <path d="M0 0h24v24H0V0z" fill="none"/>
-                        <path d="M15.61 7.41L14.2 6l-6 6 6 6 1.41-1.41L11.03 12l4.58-4.59z"/>
-                    </svg>
-                </button>
-                <button id="next">
-                    <svg
-                            height="24"
-                            viewBox="0 0 24 24"
-                            width="24"
-                            xmlns="http://www.w3.org/2000/svg"
-                    >
-                        <path d="M0 0h24v24H0V0z" fill="none"/>
-                        <path d="M10.02 6L8.61 7.41 13.19 12l-4.58 4.59L10.02 18l6-6-6-6z"/>
-                    </svg>
-                </button>
             </div>
 
             <div class="map" id="map">
@@ -155,8 +73,10 @@
     </body>
 
     <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    <script>
+        var animeLocations = {{ anime_locations | tojson }};
+    </script>
     <script crossorigin=""
             integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
             src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
 </html>

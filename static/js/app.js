@@ -1,15 +1,11 @@
-//  Carousel section
-const gap = 16;
-
-const carousel = document.getElementById("carousel"),
-  content = document.getElementById("content"),
-  next = document.getElementById("next"),
-  prev = document.getElementById("prev");
+const carousel = document.getElementById("carousel");
+const content = document.getElementById("content");
 
 let width;
 let itemWidth;
 let numVisibleItems;
 let currentScrollIndex = 0;
+const gap = 16;
 
 function updateCarousel() {
   width = carousel.offsetWidth;
@@ -24,34 +20,12 @@ function updateCarousel() {
   items.forEach((item) => {
     item.style.width = `${itemWidth}px`;
   });
-
-  carousel.scrollLeft = currentScrollIndex * (itemWidth + gap);
-
-  prev.style.display = currentScrollIndex > 0 ? "flex" : "none";
-  next.style.display = currentScrollIndex + numVisibleItems < items.length ? "flex" : "none";
 }
 
-next.addEventListener("click", () => {
-  const items = document.querySelectorAll(".item");
-  const maxIndex = items.length - numVisibleItems;
-
-  currentScrollIndex = Math.min(currentScrollIndex + numVisibleItems, maxIndex);
-  carousel.scrollTo({ left: currentScrollIndex * (itemWidth + gap), behavior: "smooth" });
-
-  prev.style.display = "flex";
-  if (currentScrollIndex >= maxIndex) {
-    next.style.display = "none";
-  }
-});
-
-prev.addEventListener("click", () => {
-  currentScrollIndex = Math.max(currentScrollIndex - numVisibleItems, 0);
-  carousel.scrollTo({ left: currentScrollIndex * (itemWidth + gap), behavior: "smooth" });
-
-  next.style.display = "flex";
-  if (currentScrollIndex <= 0) {
-    prev.style.display = "none";
-  }
+carousel.addEventListener("wheel", (e) => {
+  e.preventDefault();
+  const scrollAmount = numVisibleItems * (itemWidth + gap);
+  carousel.scrollBy({ left: e.deltaY > 0 ? scrollAmount : -scrollAmount, behavior: "smooth" });
 });
 
 window.addEventListener("resize", updateCarousel);
@@ -73,12 +47,15 @@ document.addEventListener("DOMContentLoaded", function () {
     popupAnchor: [0, -40]
   });
 
-  var locations = [
-    { coords: [35.7101, 139.8107], name: "Tokyo Skytree" },
-    { coords: [35.6895, 139.6917], name: "Shinjuku" },
-    { coords: [35.6586, 139.7454], name: "Tokyo Tower" },
-    { coords: [35.7118, 139.7967], name: "Asakusa" }
-  ];
+var locations = [];
+animeLocations.forEach(function(location) {
+    var coords = location.coordinates.split(', ').map(Number);
+
+    locations.push({
+        coords: coords,
+        name: location.location_name
+    });
+});
 
   locations.forEach(function (location, index) {
     L.marker(location.coords, { icon: customIcon })
