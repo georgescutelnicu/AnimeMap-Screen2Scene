@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <title>Custom Navbar</title>
+        <link crossorigin="" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+              integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+              rel="stylesheet"/>
+         <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
+    </head>
+    <body>
+    <nav class="nav">
+        <a class="navLogo" href="/">
+            <img alt="Logo" class="navLogoImg" src="{{ url_for('static', filename='images/logo.png') }}">
+            <span class="navBrand">Anime Map - Screen2Scene</span>
+        </a>
+
+        <div class="navLinks">
+            <a class="navLink" href="https://www.example.com" target="_blank">
+                <span class="navLinkText">Source Code</span>
+                <img alt="GitHub Icon" class="navLinkIcon" src="{{ url_for('static', filename='images/github.png') }}">
+            </a>
+        </div>
+    </nav>
+
+    <div class="section">
+        <div class="container">
+            <section class="textSection">
+                <h1 class="textHeading">
+                    Discover real-life locations featured in your favorite anime or
+                    explore the full list of anime locations
+                    across Japan on the <a class="highlightedText" href="#map">map</a>!
+                </h1>
+            </section>
+
+            <div id="carouselWrapper">
+                <div id="carousel">
+                    <div id="content">
+                        <div>
+                            <img
+                                    class="item"
+                                    src="https://cdn.myanimelist.net/images/anime/1405/143284l.jpg"
+                            />
+                            <p class="animeTitle">Randon anime name here 2nd</p>
+                        </div>
+                        <div>
+                            <img
+                                    class="item"
+                                    src="https://cdn.myanimelist.net/images/anime/1405/143284l.jpg"
+                            />
+                            <p class="animeTitle">Randon anime name here 2nd</p>
+                        </div>
+                        <div>
+                            <img
+                                    class="item"
+                                    src="https://cdn.myanimelist.net/images/anime/1405/143284l.jpg"
+                            />
+                            <p class="animeTitle">Randon anime name here 2nd</p>
+                        </div>
+                        <div>
+                            <img
+                                    class="item"
+                                    src="https://cdn.myanimelist.net/images/anime/1405/143284l.jpg"
+                            />
+                            <p class="animeTitle">Randon anime name here 2nd</p>
+                        </div>
+                        <div>
+                            <img
+                                    class="item"
+                                    src="https://cdn.myanimelist.net/images/anime/1405/143284l.jpg"
+                            />
+                            <p class="animeTitle">Randon anime name here 2nd</p>
+                        </div>
+                        <div>
+                            <img
+                                    class="item"
+                                    src="https://cdn.myanimelist.net/images/anime/1405/143284l.jpg"
+                            />
+                            <p class="animeTitle">Randon anime name here 2nd</p>
+                        </div>
+                        <div>
+                            <img
+                                    class="item"
+                                    src="https://cdn.myanimelist.net/images/anime/1405/143284l.jpg"
+                            />
+                            <p class="animeTitle">Randon anime name here 2nd</p>
+                        </div>
+                        <div>
+                            <img
+                                    class="item"
+                                    src="https://cdn.myanimelist.net/images/anime/1405/143284l.jpg"
+                            />
+                            <p class="animeTitle">Randon anime name here 2nd</p>
+                        </div>
+                        <div>
+                            <img
+                                    class="item"
+                                    src="https://cdn.myanimelist.net/images/anime/1405/143284l.jpg"
+                            />
+                            <p class="animeTitle">Randon anime name here 2nd</p>
+                        </div>
+                        <div>
+                            <img
+                                    class="item"
+                                    src="https://cdn.myanimelist.net/images/anime/1405/143284l.jpg"
+                            />
+                            <p class="animeTitle">Randon anime name here 2nd</p>
+                        </div>
+                        <div>
+                            <img
+                                    class="item"
+                                    src="https://cdn.myanimelist.net/images/anime/1405/143284l.jpg"
+                            />
+                            <p class="animeTitle">Randon anime name here 2nd</p>
+                        </div>
+                    </div>
+                </div>
+                <button id="prev">
+                    <svg
+                            height="24"
+                            viewBox="0 0 24 24"
+                            width="24"
+                            xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path d="M0 0h24v24H0V0z" fill="none"/>
+                        <path d="M15.61 7.41L14.2 6l-6 6 6 6 1.41-1.41L11.03 12l4.58-4.59z"/>
+                    </svg>
+                </button>
+                <button id="next">
+                    <svg
+                            height="24"
+                            viewBox="0 0 24 24"
+                            width="24"
+                            xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path d="M0 0h24v24H0V0z" fill="none"/>
+                        <path d="M10.02 6L8.61 7.41 13.19 12l-4.58 4.59L10.02 18l6-6-6-6z"/>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="map" id="map">
+                <div class="mapContent"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+            <span class="footerCopyright">Special thanks to
+                <a href="https://furaba-animeseichi.blog.jp/">フラバーのふらふらアニメ聖地巡礼</a> for their amazing work!
+                <br> Be sure to check them out for more anime pilgrimage adventures!</span>
+    </footer>
+
+    </body>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    <script crossorigin=""
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+            src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+</html>
