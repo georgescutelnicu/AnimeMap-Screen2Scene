@@ -12,17 +12,25 @@ db.init_app(app)
 
 @app.route("/")
 def home():
+    map_pins = []
+    anime_details_dict = {}
+    anime_locations_dict = {}
+
     anime_details = db.session.query(AnimeDetails).all()
     anime_locations = db.session.query(AnimeLocation).all()
 
-    locations_data = [{
-        "location_name": location.location_name,
-        "coordinates": location.coordinates,
-        "real_photos": location.real_photos,
-        "anime_photos": location.anime_photos
-    } for location in anime_locations]
+    for anime in anime_details:
+        anime_details_dict[anime.japanese_name] = anime.to_dict()
 
-    return render_template("index.html", anime_details = anime_details, anime_locations = locations_data)
+    for location in anime_locations:
+        map_pins.append({
+            "location_name": location.location_name,
+            "coordinates": location.coordinates,
+        })
+        anime_locations_dict[location.location_name] = location.to_dict()
+
+    return render_template("index.html", anime_details = anime_details_dict, anime_locations = anime_details_dict,
+                           map_pins = map_pins)
 
 
 if __name__ == '__main__':

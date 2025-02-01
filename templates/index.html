@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
-        <title>Custom Navbar</title>
+        <title>AnimeMap - Screen2Scene</title>
         <link crossorigin="" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
               integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
               rel="stylesheet"/>
@@ -38,18 +38,18 @@
                 <div id="carousel">
                     <div id="content">
                         {% for anime in anime_details %}
-                            <div class="animeContainer">
+                            <div class="animeContainer" onclick="showAnime('{{ anime_details[anime].japanese_name }}')">
                                 <img
                                         class="item"
-                                        src="{{ anime.image_url }}"
+                                        src="{{ anime_details[anime].image_url }}"
                                 />
                                 <div class="overlay">
-                                {% if anime.japanese_name.lower() == anime.english_name.lower()
-                                    or anime.english_name.lower() == anime.romaji_name.lower() %}
-                                    <p class="animeTitle">{{ anime.romaji_name }}</p>
+                                {% if anime_details[anime].japanese_name.lower() == anime_details[anime].english_name.lower()
+                                    or anime_details[anime].english_name.lower() == anime_details[anime].romaji_name.lower() %}
+                                    <p class="animeTitle">{{ anime_details[anime].romaji_name }}</p>
                                 {% else %}
-                                    <p class="animeTitle">{{ anime.english_name }} <br>
-                                        <span class="enAnimeTitle">({{ anime.romaji_name }})</span></p>
+                                    <p class="animeTitle">{{ anime_details[anime].english_name }} <br>
+                                        <span class="enAnimeTitle">({{ anime_details[anime].romaji_name }})</span></p>
                                 {% endif %}
                                 </div>
                             </div>
@@ -65,7 +65,7 @@
     </div>
 
     <footer class="footer">
-            <span class="footerCopyright">Special thanks to
+            <span class="footerText">Special thanks to
                 <a href="https://furaba-animeseichi.blog.jp/">フラバーのふらふらアニメ聖地巡礼</a> for their amazing work!
                 <br> Be sure to check them out for more anime pilgrimage adventures!</span>
     </footer>
@@ -74,7 +74,7 @@
 
     <script src="{{ url_for('static', filename='js/app.js') }}"></script>
     <script>
-        var animeLocations = {{ anime_locations | tojson }};
+        var animeLocations = {{ map_pins | tojson }};
     </script>
     <script crossorigin=""
             integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
