@@ -27,9 +27,13 @@ def home():
             "location_name": location.location_name,
             "coordinates": location.coordinates,
         })
-        anime_locations_dict[location.location_name] = location.to_dict()
 
-    return render_template("index.html", anime_details = anime_details_dict, anime_locations = anime_details_dict,
+        if location.location_name not in anime_locations_dict:
+            anime_locations_dict[location.location_name] = []
+
+        anime_locations_dict[location.location_name].append(location.to_dict())
+
+    return render_template("index.html", anime_details = anime_details_dict, anime_locations = anime_locations_dict,
                            map_pins = map_pins)
 
 
