@@ -80,8 +80,8 @@ class WebScraper:
                         self.temp_real_photos = []
                         self.temp_anime_photos = []
 
-            elif element.name == "a" and element.get("href"):
-                image_url = element["href"]
+            elif element.name == "img" and element.get("src"):
+                image_url = element["src"]
 
                 if image_url not in self.temp_real_photos and image_url not in self.temp_anime_photos:
                     if len(self.temp_real_photos) <= len(self.temp_anime_photos):
