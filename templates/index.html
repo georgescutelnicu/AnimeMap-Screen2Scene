@@ -61,6 +61,10 @@
             <div class="map" id="map">
                 <div class="mapContent"></div>
             </div>
+
+            <div id="infoContent" class="info-content">
+
+            </div>
         </div>
     </div>
 
@@ -74,7 +78,9 @@
 
     <script src="{{ url_for('static', filename='js/app.js') }}"></script>
     <script>
-        var animeLocations = {{ map_pins | tojson }};
+        var mapPins = {{ map_pins | tojson }};
+        var animeDetails = {{ anime_details | tojson }};
+        var animeLocations = {{ anime_locations | tojson }};
     </script>
     <script crossorigin=""
             integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
