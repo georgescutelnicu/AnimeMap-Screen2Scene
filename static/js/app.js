@@ -116,6 +116,7 @@ function showAnime(animeName) {
     html += `</div>`;
 
     document.getElementById('infoContent').innerHTML = html;
+    document.getElementById('infoContent').scrollIntoView({ behavior: 'smooth' });
 }
 
 function showLocation(locationName) {
@@ -161,4 +162,5 @@ function showLocation(locationName) {
     html += `</div>`;
 
     document.getElementById('infoContent').innerHTML = html;
+    document.getElementById('infoContent').scrollIntoView({ behavior: 'smooth' });
 }
