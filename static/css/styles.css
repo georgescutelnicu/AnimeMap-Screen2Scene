@@ -108,10 +108,10 @@ body {
 }
 
 #carousel {
-    display: flex;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    padding-bottom: 10px;
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 10px;
 }
 
 #carousel::-webkit-scrollbar {
@@ -120,11 +120,11 @@ body {
 }
 
 #carousel::-webkit-scrollbar-thumb {
-    background: #888;
+  background: #888;
 }
 
 #carousel::-webkit-scrollbar-thumb:hover {
-    background: #555;
+  background: #555;
 }
 
 .animeContainer {
@@ -141,6 +141,7 @@ body {
   width: 210px;
   height: 300px;
   border-radius: 18px;
+  scroll-snap-align: start;
 }
 
 .overlay {
