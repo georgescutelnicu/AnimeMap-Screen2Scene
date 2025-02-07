@@ -52,6 +52,8 @@ python scraper.py --ids 222510 --csv_name output
 
 **Error Handling**: The script stops execution if a non-200 status code is encountered during scraping.
 
+*Only works for anime pages where the photos (real/anime) are displayed in pairs.*
+
 ## Acknowledgments
 [Furaba Anime Seichi](https://furaba-animeseichi.blog.jp/) for providing the locations and images used in this project.
 
