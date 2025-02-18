@@ -8,6 +8,10 @@ AnimeMap-Screen2Scene is a web application that maps real-world locations featur
 - **Frontend:** HTML, CSS, JavaScript, Leaflet.js
 - **Database:** PostgreSQL (via SQLAlchemy ORM)
 
+## Data
+A data folder is included in the project, containing data used to populate the map. The only modification from the original scraped data was adding a coordinates column to the location table.
+Additionally, some location names were missing, so i had to manually updated them.
+
 ## Demo
 Hosted on [Render](https://render.com/).
 <br>
